@@ -2,9 +2,9 @@
 
 from OpenOrchestrator.orchestrator_connection.connection import OrchestratorConnection
 from OpenOrchestrator.database.queues import QueueElement
+import requests
 from GetKMDAcessToken import GetKMDToken
 import uuid 
-import requests
 import pyodbc
 import json
 from datetime import datetime
