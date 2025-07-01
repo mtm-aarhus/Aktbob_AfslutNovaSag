@@ -240,7 +240,7 @@ def process(orchestrator_connection: OrchestratorConnection, queue_element: Queu
                 "uuid": task_uuid, 
                 "caseUuid": case_uuid,
                 "title": task_name,
-                "description": DeskProID,
+                "description": f"DeskProID: {DeskProID}",
                 "caseworker": { 
                     "kspIdentity": {
                         "novaUserId": "78897bfc-2a36-496d-bc76-07e7a6b0850e",
