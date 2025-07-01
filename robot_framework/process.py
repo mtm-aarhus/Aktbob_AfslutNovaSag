@@ -61,7 +61,8 @@ def process(orchestrator_connection: OrchestratorConnection, queue_element: Queu
     if CaseUuid:
         # Looper igennem caseUuid'erne:
         for case_uuid in CaseUuid:
-            
+            print(f"CaseUUID: {case_uuid}")
+                  
             ## --- Henter CaseTitle --- #
             TransactionID = str(uuid.uuid4())
 
@@ -238,7 +239,8 @@ def process(orchestrator_connection: OrchestratorConnection, queue_element: Queu
                 },
                 "uuid": task_uuid, 
                 "caseUuid": case_uuid,
-                "title": task_name, 
+                "title": task_name,
+                "description": DeskProID,
                 "caseworker": { 
                     "kspIdentity": {
                         "novaUserId": "78897bfc-2a36-496d-bc76-07e7a6b0850e",
