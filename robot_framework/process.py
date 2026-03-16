@@ -8,6 +8,7 @@ import uuid
 import pyodbc
 import json
 from datetime import datetime
+from nova_tls_helper import nova_request
 
 # pylint: disable-next=unused-argument
 def process(orchestrator_connection: OrchestratorConnection, queue_element: QueueElement | None = None) -> None:
@@ -92,7 +93,13 @@ def process(orchestrator_connection: OrchestratorConnection, queue_element: Queu
             }
             }
             try:
-                response = requests.put(Caseurl, headers=headers, json=data)
+                #response = requests.put(Caseurl, headers=headers, json=data)
+                response = nova_request(
+                "PUT",
+                Caseurl,
+                headers=headers,
+                json=data
+                )
                 
                 # Handle response
                 if response.status_code == 200:
@@ -143,7 +150,13 @@ def process(orchestrator_connection: OrchestratorConnection, queue_element: Queu
             }
             }
             try:
-                response = requests.patch(Caseurl, headers=headers, json=data)
+                #response = requests.patch(Caseurl, headers=headers, json=data)
+                response = nova_request(
+                "PATCH",
+                Caseurl,
+                headers=headers,
+                json=data
+                )
                 
                 # Handle response
                 if response.status_code == 200:
@@ -175,8 +188,13 @@ def process(orchestrator_connection: OrchestratorConnection, queue_element: Queu
             "taskDescription": True
             }
             try:
-                response = requests.put(Caseurl, headers=headers, json=data)
-
+                #response = requests.put(Caseurl, headers=headers, json=data)
+                response = nova_request(
+                "PUT",
+                Caseurl,
+                headers=headers,
+                json=data
+            )
                 if response.status_code == 200:
                     print("API call successful. Parsing task list...")
                     
@@ -254,7 +272,13 @@ def process(orchestrator_connection: OrchestratorConnection, queue_element: Queu
                 }
                 
                 try:
-                    response = requests.put(Caseurl, headers=headers, json=task_data)
+                    #response = requests.put(Caseurl, headers=headers, json=task_data)
+                    response = nova_request(
+                    "PUT",
+                    Caseurl,
+                    headers=headers,
+                    json=task_data
+                    )
                     if response.status_code == 200:
                         print(f"{task_name} er blevet færdiggjort")
                     else: 
